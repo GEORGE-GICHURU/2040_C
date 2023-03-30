@@ -23,4 +23,6 @@ void createStudent()
     getline(cin, s.major);
 
     ofstream outfile("students.txt", ios::app);
+    outfile << s.name << "," << s.age << "," << s.major << endl;
+    outfile.close();
 }
