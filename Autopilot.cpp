@@ -30,4 +30,20 @@ public:
     {
         airspeed = spd;
     }
+
+    void engage()
+    {
+        cout << "Autopilot engaged." << endl;
+    }
+
+    void disengage()
+    {
+        cout << "Autopilot disengaged." << endl;
+    }
+
+    void update()
+    {
+        // code to update autopilot based on sensors and inputs
+        cout << "Autopilot is updated." << endl;
+    }
 };
