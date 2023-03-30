@@ -21,4 +21,18 @@ int main()
     cin >> username;
     cout << "Enter your password";
     cin >> password;
+
+    // check if the entered username and password match any of the usernames and passwords in the map
+    if (users.count(username) && users[username] == password)
+    {
+        cout << "Authentication is successfull!!!" << endl;
+        // allow the user to acces the system
+    }
+    else
+    {
+        cout << "Authentication failed. Please try again." << endl;
+        // Deny access to the system
+    }
+
+    return 0;
 }
