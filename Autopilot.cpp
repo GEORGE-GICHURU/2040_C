@@ -47,3 +47,15 @@ public:
         cout << "Autopilot is updated." << endl;
     }
 };
+
+int main()
+{
+    Autopilot ap;
+    ap.setAltitude(10000);
+    ap.setHeading(270);
+    ap.setAirspeed(250);
+    ap.engage();
+    ap.update();
+    ap.disengage();
+    return 0;
+}
