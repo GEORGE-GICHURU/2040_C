@@ -92,3 +92,43 @@ void updateStudent()
         cout << "Student updated." << endl;
     }
 }
+
+void deleteStudent()
+{
+    string name;
+    cout << "Enter the name of the student to delete: ";
+    getline(cin, name);
+
+    ifstream infile("students.txt");
+    ofstream outfile("update.txt");
+    string line;
+    bool found = false;
+    while (getline(infile, line))
+    {
+        Student s;
+        size_t pos = line.find(",");
+        s.name = line.substr(0, pos);
+        if (s.name == name)
+        {
+            found = true;
+        }
+        else
+        {
+            outfile << line << endl;
+        }
+    }
+
+    infile.close();
+    outfile.close();
+
+    if (!found)
+    {
+        cout << "Student not found.";
+    }
+    else
+    {
+        remove("students.txt");
+        rename("update.txt", "students.txt");
+        cout << "Student has been deleted." << endl;
+    }
+}
