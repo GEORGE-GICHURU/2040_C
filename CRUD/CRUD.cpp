@@ -46,3 +46,49 @@ void readStudents()
 
     infile.close();
 }
+
+void updateStudent()
+{
+    string name;
+    cout << "Enter name of student to update: ";
+    getline(cin, name);
+
+    ifstream infile("students.txt");
+    ofstream outfile("update.txt");
+    string line;
+    bool found = false;
+    while (getline(infile, line))
+    {
+        Student s;
+        size_t pos = line.find(",");
+        s.name = line.substr(0, pos);
+        if (s.name == name)
+        {
+            found = true;
+            cout << "Enter new age: ";
+            cin >> s.age;
+            cin.ignore();
+            cout << "Enter new major: ";
+            getline(cin, s.major);
+            outfile << s.name << "," << s.age << "," << s.major << endl;
+        }
+        else
+        {
+            outfile << line << endl;
+        }
+    }
+
+    infile.close();
+    outfile.close();
+
+    if (!found)
+    {
+        cout << "Student not found." << endl;
+    }
+    else
+    {
+        remove("students.txt");
+        rename("update.txt", "students.txt");
+        cout << "Student updated." << endl;
+    }
+}
