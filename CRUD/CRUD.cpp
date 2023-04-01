@@ -27,7 +27,7 @@ void createStudent()
     outfile.close();
 }
 
-void readStudents()
+void readStudent()
 {
     ifstream infile("students.txt");
     string line;
@@ -131,4 +131,49 @@ void deleteStudent()
         rename("update.txt", "students.txt");
         cout << "Student has been deleted." << endl;
     }
+}
+
+int main()
+{
+    int choice;
+    do
+    {
+        cout << "1. Create student" << endl;
+        cout << "2. Read student" << endl;
+        cout << "3. Update student" << endl;
+        cout << "4. Delete student" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        switch (choice)
+        {
+        case 1:
+            createStudent();
+            break;
+
+        case 2:
+            readStudent();
+            break;
+
+        case 3:
+            updateStudent();
+            break;
+
+        case 4:
+            deleteStudent();
+            break;
+
+        case 5:
+            cout << "Exiting the program." << endl;
+            break;
+
+        default:
+            cout << "Invalid choice." << endl;
+            break;
+        }
+    } while (choice != 5);
+
+    return 0;
 }
