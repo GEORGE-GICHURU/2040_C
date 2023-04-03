@@ -148,7 +148,7 @@ int main()
         cin.ignore();
 
         switch (choice)
-        {data
+        do {
         case 1:
             createStudent();
             break;
